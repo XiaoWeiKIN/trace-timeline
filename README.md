@@ -50,9 +50,6 @@ src/
 **Apache-2.0** 版权头（Uber / Jaeger Authors）。详见：
 
 - [`LICENSE`](LICENSE) —— Apache License 2.0 全文
-- [`NOTICE`](NOTICE) —— 归属声明
-- [`LICENSE-INVENTORY.md`](LICENSE-INVENTORY.md) —— **逐文件许可证清单 + 公开发布前的法务核实项**
-
-> ⚠️ 公开分发前请先过一遍 `LICENSE-INVENTORY.md` 的「需重点核实」项。
+- [`NOTICE`](NOTICE) —— 归属声明（上游版权方与许可证）
 
 > 设计文档见 `_bmad-output/`（PRD / 架构 spine `ARCHITECTURE-SPINE.md` / Datadog 视觉规格 / 源码移植地图 / 各 Epic 调研）。
