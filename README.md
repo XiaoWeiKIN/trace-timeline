@@ -1,5 +1,8 @@
 # @datafox/trace-timeline
 
+[![CI](https://github.com/XiaoWeiKIN/trace-timeline/actions/workflows/ci.yml/badge.svg)](https://github.com/XiaoWeiKIN/trace-timeline/actions/workflows/ci.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](./LICENSE)
+
 Datadog 风格的 Trace Timeline React 组件库。
 
 - **视觉**：对标 Datadog APM Waterfall（仅顶圆角条、服务色缩进竖线、行内 HTTP 状态 pill、Color-by、DRUIDS 令牌）+ Trace 火焰图视图 + 服务图例

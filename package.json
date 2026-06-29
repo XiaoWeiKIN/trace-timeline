@@ -1,6 +1,6 @@
 {
   "name": "@datafox/trace-timeline",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Datadog 风格 Trace Timeline 组件库（Grafana 引擎 + Datadog 皮肤 + 可插拔后端适配器）",
   "license": "Apache-2.0",
   "type": "module",
