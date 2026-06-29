@@ -1,0 +1,16 @@
+@datafox/trace-timeline
+Copyright (c) 2026 The @datafox/trace-timeline Authors
+
+This product includes software ported from Grafana TraceView, whose underlying
+trace timeline engine derives from Jaeger UI.
+
+  - Portions Copyright (c) 2017, 2019 Uber Technologies, Inc.
+  - Portions Copyright (c) 2020, 2023 The Jaeger Authors.
+
+Those portions are licensed under the Apache License, Version 2.0; the original
+copyright and license headers are retained at the top of each ported source
+file, and significant modifications are noted inline. A copy of the Apache
+License, Version 2.0 is included in the LICENSE file.
+
+See LICENSE-INVENTORY.md for a per-file mapping of upstream provenance and the
+license-review items that must be cleared before public distribution.

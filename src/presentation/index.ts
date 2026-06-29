@@ -1,0 +1,28 @@
+// presentation 层公共导出（Story 1.6）——Datadog 皮肤：行/条/标签/缩进竖线/刻度表头 + rowRenderer 工厂。
+export { createDatadogRowRenderer, type DatadogSkinOptions } from './rowRenderer';
+export { defaultColorAccessor, colorAccessorForDimension, httpStatusToken, type ColorAccessor } from './colorAccessor';
+export { DdSpanRow } from './DdSpanRow';
+export { DdSpanBar } from './DdSpanBar';
+export { DdLabelCell } from './DdLabelCell';
+export { DdIndentGuides } from './DdIndentGuides';
+export { DdTicks } from './DdTicks';
+export { DdViewingLayer, type DdViewingLayerProps } from './DdViewingLayer';
+export { DdColumnResizer, type DdColumnResizerProps } from './DdColumnResizer';
+export { DdSpanDetail } from './DdSpanDetail';
+export { DdSpanDetailHeader } from './DdSpanDetailHeader';
+export { DdSpanDetailTabs } from './DdSpanDetailTabs';
+export { DdAccordian } from './DdAccordian';
+export { DdHttpRequestBar } from './DdHttpRequestBar';
+export { DdKeyValuesTable } from './DdKeyValuesTable';
+export { buildAttributeGroups, type AttrGroup, type AttrRow } from './attributeGroups';
+export { DdSearchBar } from './DdSearchBar';
+export { DdColorByDropdown, type ColorByDimension } from './DdColorByDropdown';
+export { DdShareButton, DdSpanLinks, DdFlameGraph, type DetailStubs } from './detailStubs';
+export { DdTimelineHeader, HEADER_HEIGHT } from './DdTimelineHeader';
+export { DdTimelineCollapser, type DdTimelineCollapserProps } from './DdTimelineCollapser';
+export { DdFlameGraphView, type DdFlameGraphViewProps } from './DdFlameGraphView';
+export { DdViewTabs, type DdViewTabsProps, type TraceViewMode } from './DdViewTabs';
+export { DdFlameRuler, type DdFlameRulerProps } from './DdFlameRuler';
+export { DdFlameControls, type DdFlameControlsProps } from './DdFlameControls';
+export { DdFlameMinimap, type DdFlameMinimapProps } from './DdFlameMinimap';
+export { DdFlameLegend, type DdFlameLegendProps } from './DdFlameLegend';
