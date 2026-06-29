@@ -1,9 +1,9 @@
 // DataFox 适配器（Story 5.1；FR-22 / AD-8/AD-14）——把 DataFox `/api/v3/spans/search`
 // 响应（Grafana DataFrame 列式 / OTLP 字段）转成内部 Trace。自写列式解析 + 复用 transformTraceData 派生。
 // 单位归一化：timestamp(ms)→µs、duration(ns)→µs，均在此边界完成。
-// Story 8.1（AD-15）：解码部分抽成 `decodeDataFox(resp): TraceResponse`，并以 `datafoxAdapter`
-// 实现通用 `TraceSourceAdapter` 契约；`fromDataFox` 保留为 decode+派生的便捷包装（行为不变，向后兼容）。
-import type { TraceSourceAdapter } from '../adapter';
+// Story 8.1（AD-15）：解码部分抽成 `decodeDataFox(resp): TraceResponse`，并以 `datafoxDataSource`
+// 实现通用 `TraceDataSource` 契约；`fromDataFox` 保留为 decode+派生的便捷包装（行为不变，向后兼容）。
+import type { TraceDataSource } from '../dataSource';
 import transformTraceData from '../transform-trace-data';
 import type { Trace, TraceKeyValuePair, TraceLog, TraceProcess, TraceResponse, TraceSpanData } from '../types';
 
@@ -100,7 +100,7 @@ function parseEvents(raw: unknown): TraceLog[] {
  * DataFox 响应 → 规范 `TraceResponse`（解码层，AD-15 契约的 `decode`）。
  * 列式→行式；parent_span_id→references[CHILD_OF]（孤儿父按 root，不挂 reference）；
  * {resource,span}_attributes_raw→process.tags/span.tags；events→logs；ms/ns→µs。
- * 派生（depth/services…）不在此——交 transformTraceData（见 fromDataFox / adaptTrace）。
+ * 派生（depth/services…）不在此——交 transformTraceData（见 fromDataFox / loadTrace）。
  */
 export function decodeDataFox(resp: DataFoxResponse): TraceResponse | null {
   const frame = resp?.data?.A?.frames?.[0];
@@ -240,8 +240,8 @@ export function fromDataFox(resp: DataFoxResponse): Trace | null {
   return response ? transformTraceData(response) : null;
 }
 
-/** DataFox 数据源适配器（AD-15 契约实例）。供 `adaptTrace(datafoxAdapter, resp)` 使用。 */
-export const datafoxAdapter: TraceSourceAdapter<DataFoxResponse> = {
+/** DataFox 数据源适配器（AD-15 契约实例）。供 `loadTrace(datafoxDataSource, resp)` 使用。 */
+export const datafoxDataSource: TraceDataSource<DataFoxResponse> = {
   id: 'datafox',
   decode: decodeDataFox,
 };

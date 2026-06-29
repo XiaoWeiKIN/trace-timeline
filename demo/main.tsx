@@ -2,10 +2,10 @@ import { css } from '@emotion/css';
 import { StrictMode, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import { TraceTimeline, VERSION, adaptTrace } from '../src';
+import { TraceTimeline, VERSION, loadTrace } from '../src';
 import { mockTrace } from '../src/model';
-// 子路径导出（AD-15）：OTLP 适配器按需引入，证明多后端经同一 adaptTrace 渲染。
-import { otlpAdapter, otlpFixture } from '../src/adapters/otlp';
+// 子路径导出（AD-15）：OTLP 适配器按需引入，证明多后端经同一 loadTrace 渲染。
+import { otlpDataSource, otlpFixture } from '../src/datasources/otlp';
 import { DdFlameGraphView } from '../src/presentation';
 import {
   createTheme,
@@ -56,9 +56,9 @@ function Demo({ mode, onToggle }: { mode: ThemeColorMode; onToggle: () => void }
   const theme = useTheme2();
   // 滚动定位演示（FR-7）：受控 focusedSpanId + 受限高度，使尾部 span 出视口可观察滚动。
   const [focusedSpanId, setFocusedSpanId] = useState<string | undefined>(undefined);
-  // 数据源切换（AD-15）：mock（DataFox 风格派生 Trace）⇄ OTLP（经 adaptTrace 解码）。
+  // 数据源切换（AD-15）：mock（DataFox 风格派生 Trace）⇄ OTLP（经 loadTrace 解码）。
   const [source, setSource] = useState<'mock' | 'otlp'>('mock');
-  const otlpTrace = useMemo(() => adaptTrace(otlpAdapter, otlpFixture), []);
+  const otlpTrace = useMemo(() => loadTrace(otlpDataSource, otlpFixture), []);
   const activeTrace = source === 'otlp' ? otlpTrace : mockTrace;
   const firstSpan = mockTrace.spans[0];
   const lastSpan = mockTrace.spans[mockTrace.spans.length - 1];
@@ -103,7 +103,7 @@ function Demo({ mode, onToggle }: { mode: ThemeColorMode; onToggle: () => void }
         一行注入：api 把 Datadog 皮肤注入 core 引擎，渲染完整静态瀑布（仅顶圆角条 / 服务色缩进竖线 / HTTP 状态 pill / 错误 ⚠ / 刻度表头）。
       </p>
       <button className={styles.toggle} onClick={() => setSource((s) => (s === 'mock' ? 'otlp' : 'mock'))}>
-        数据源（AD-15 可插拔适配器）：{source === 'mock' ? 'mock（内置）' : 'OTLP（adaptTrace）'} — 点击切换
+        数据源（AD-15 可插拔适配器）：{source === 'mock' ? 'mock（内置）' : 'OTLP（loadTrace）'} — 点击切换
       </button>
       <TraceTimeline
         trace={activeTrace}

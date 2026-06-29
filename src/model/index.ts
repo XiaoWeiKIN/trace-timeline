@@ -7,7 +7,7 @@ export { default as TreeNode } from './tree-node';
 export { default as spanAncestorIds } from './span-ancestor-ids';
 export { mockTrace, mockTraceResponse } from './mock-trace';
 // 后端中立适配器契约（AD-15）。具体适配器（datafox/otlp）走子路径导出，不在主入口。
-export { adaptTrace, type TraceSourceAdapter } from './adapter';
+export { loadTrace, type TraceDataSource } from './dataSource';
 export type {
   Trace,
   TraceData,

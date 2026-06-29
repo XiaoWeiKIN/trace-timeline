@@ -1,8 +1,8 @@
 // OTLP/JSON 适配器（Story 8.3；AD-15）——把 OpenTelemetry OTLP trace 导出（protojson 形状）
-// 解码成规范 `TraceResponse`，验证 `TraceSourceAdapter` 契约对「嵌套 + 异构 wire 格式」同样成立
+// 解码成规范 `TraceResponse`，验证 `TraceDataSource` 契约对「嵌套 + 异构 wire 格式」同样成立
 // （DataFox 是列式 DataFrame，OTLP 是 resourceSpans 嵌套树 + AnyValue 包裹的属性 + 十六进制 id + 纳秒时间）。
 // 单位归一化：startTimeUnixNano/endTimeUnixNano(ns)→µs，在此边界完成。
-import type { TraceSourceAdapter } from '../adapter';
+import type { TraceDataSource } from '../dataSource';
 import transformTraceData from '../transform-trace-data';
 import type { Trace, TraceKeyValuePair, TraceLog, TraceProcess, TraceResponse, TraceSpanData } from '../types';
 
@@ -312,8 +312,8 @@ export function fromOtlp(resp: OtlpResponse): Trace | null {
   return response ? transformTraceData(response) : null;
 }
 
-/** OTLP 数据源适配器（AD-15 契约实例）。供 `adaptTrace(otlpAdapter, resp)` 使用。 */
-export const otlpAdapter: TraceSourceAdapter<OtlpResponse> = {
+/** OTLP 数据源适配器（AD-15 契约实例）。供 `loadTrace(otlpDataSource, resp)` 使用。 */
+export const otlpDataSource: TraceDataSource<OtlpResponse> = {
   id: 'otlp',
   decode: decodeOtlp,
 };

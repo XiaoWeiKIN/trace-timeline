@@ -5,8 +5,8 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   entry: {
     index: 'src/index.ts',
-    'adapters/datafox': 'src/adapters/datafox/index.ts',
-    'adapters/otlp': 'src/adapters/otlp/index.ts',
+    'datasources/datafox': 'src/datasources/datafox/index.ts',
+    'datasources/otlp': 'src/datasources/otlp/index.ts',
   },
   format: ['esm'],
   dts: true,

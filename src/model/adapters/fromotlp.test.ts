@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { decodeOtlp, fromOtlp, otlpAdapter, type OtlpResponse } from './fromOtlp';
+import { decodeOtlp, fromOtlp, otlpDataSource, type OtlpResponse } from './fromOtlp';
 import { otlpFixture } from './otlp-fixture';
 
 describe('decodeOtlp（OTLP/JSON → TraceResponse）', () => {
@@ -97,9 +97,9 @@ describe('decodeOtlp（OTLP/JSON → TraceResponse）', () => {
     expect(trace.duration).toBe(50);
   });
 
-  it('otlpAdapter 实现 TraceSourceAdapter 契约', () => {
-    expect(otlpAdapter.id).toBe('otlp');
-    expect(otlpAdapter.decode(otlpFixture)).not.toBeNull();
+  it('otlpDataSource 实现 TraceDataSource 契约', () => {
+    expect(otlpDataSource.id).toBe('otlp');
+    expect(otlpDataSource.decode(otlpFixture)).not.toBeNull();
   });
 });
 

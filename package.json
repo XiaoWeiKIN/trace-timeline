@@ -22,13 +22,13 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./adapters/datafox": {
-      "types": "./dist/adapters/datafox.d.ts",
-      "import": "./dist/adapters/datafox.js"
+    "./datasources/datafox": {
+      "types": "./dist/datasources/datafox.d.ts",
+      "import": "./dist/datasources/datafox.js"
     },
-    "./adapters/otlp": {
-      "types": "./dist/adapters/otlp.d.ts",
-      "import": "./dist/adapters/otlp.js"
+    "./datasources/otlp": {
+      "types": "./dist/datasources/otlp.d.ts",
+      "import": "./dist/datasources/otlp.js"
     }
   },
   "scripts": {

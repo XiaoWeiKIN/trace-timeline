@@ -12,6 +12,6 @@ export * from './theme';
 export * from './model';
 export * from './utils';
 export * from './ui';
-// 后端中立：具体数据源适配器（DataFox/OTLP）不在主入口，走子路径导出（AD-15）：
-//   `@datafox/trace-timeline/adapters/datafox` | `.../adapters/otlp`
-// 主入口仅暴露后端中立契约 `TraceSourceAdapter` / `adaptTrace`（经 ./model 再导出）。
+// 后端中立：具体数据源（DataFox/OTLP）不在主入口，走子路径导出（AD-15）：
+//   `@datafox/trace-timeline/datasources/datafox` | `.../datasources/otlp`
+// 主入口仅暴露后端中立契约 `TraceDataSource` / `loadTrace`（经 ./model 再导出）。
