@@ -13,3 +13,6 @@ coverage
 _bmad
 .claude
 .agents
+
+# 内部 BMAD 过程产物（PRD/架构/story/调研）——不对外
+_bmad-output

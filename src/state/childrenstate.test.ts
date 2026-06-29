@@ -1,5 +1,5 @@
-// useChildrenState 折叠逻辑特征化测试（重许可重写的回归安全网）。
-// 基准来自重写前实现的捕获（mockTrace），锁定逐层 collapseOne/expandOne 语义不漂移。
+// useChildrenState 折叠逻辑特征化测试。
+// 锁定逐层 collapseOne/expandOne 在 mockTrace 上的语义基准，防回归漂移。
 import { act, renderHook } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 

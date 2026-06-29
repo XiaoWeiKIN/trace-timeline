@@ -52,4 +52,4 @@ src/
 - [`LICENSE`](LICENSE) —— Apache License 2.0 全文
 - [`NOTICE`](NOTICE) —— 归属声明（上游版权方与许可证）
 
-> 设计文档见 `_bmad-output/`（PRD / 架构 spine `ARCHITECTURE-SPINE.md` / Datadog 视觉规格 / 源码移植地图 / 各 Epic 调研）。
+> 适配器开发指南见 [`docs/writing-a-trace-source-adapter.md`](docs/writing-a-trace-source-adapter.md)。
